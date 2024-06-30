@@ -29,11 +29,24 @@ class Mentor:
 class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
+        self.grades_from_students ={}
+
+
+    def rate_student(self, student, course, grade):   
+        if isinstance(student, Student) and course in self.courses_attached:
+            if course in self.grades_from_students:
+                self.grades_from_students[course] += [grade]
+            else:
+                self.grades_from_students[course] = [grade]
+        else:
+            return 'Ошибка'
 
 
 class Reviewer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
+    def rate_hw(self, student, course, grade):
+        super().rate_hw(student, course, grade)    
 
 
 
