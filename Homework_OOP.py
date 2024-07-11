@@ -83,42 +83,27 @@ class Reviewer(Mentor):
 
 
         
-student1 = Student('Dmitriy', 'Bodryakov', 'man')
-student1.courses_in_progress += ['Python'] + ['Git']
-student1.finished_courses += ['Введение в программирование']
+some_student = Student('Ruoy', 'Eman', 'your_gender')
+some_student.courses_in_progress += ['Python'] + ['Git']
+some_student.finished_courses += ['Введение в программирование']
 
-student2 = Student('Daniil', 'Voskresenskiy', 'man')
-student2.courses_in_progress += ['Python'] + ['Git']
-student2.finished_courses += ['Введение в программирование']
+some_mentor = Mentor('Some', 'Buddy')
+some_mentor.courses_attached += ['Python']
 
-lecturer1 = Lecturer('Oleg', 'Buligyn')
-lecturer1.courses_attached += ['Python'] + ['Git']
+some_lecturer = Lecturer('Some', 'Buddy')
+some_lecturer.courses_attached += ['Python']
 
-lecturer2 = Lecturer('Egor', 'Budancev')
-lecturer2.courses_attached += ['Python'] +['Git']
+some_reviewer = Reviewer('Some', 'Buddy')
+some_reviewer.courses_attached += ['Python']
 
-reviewer1 = Reviewer('Igor', 'Karpov')
-reviewer1.courses_attached += ['Python'] + ['Git']
+some_reviewer.rate_hw(some_student, 'Python', 10)
+some_reviewer.rate_hw(some_student, 'Python', 9.8)
+some_reviewer.rate_hw(some_student, 'Git', 10)
 
-reviewer2 = Reviewer('Anatoliy', 'Semenov')
-reviewer2.courses_attached += ['Git'] + ['Python']
+some_lecturer.rate_student(some_student, 'Python', 10)
+some_lecturer.rate_student(some_student, 'Python', 9.8)
+some_lecturer.rate_student(some_student, 'Git', 10)
 
-lecturer1.rate_student(student1, 'Python', 10)
-lecturer1.rate_student(student1, 'Git', 9)
-
-lecturer2.rate_student(student2, 'Python', 9)
-lecturer2.rate_student(student2, 'Git', 10)
-
-reviewer1.rate_hw(student1, 'Python', 9)
-reviewer1.rate_hw(student1, 'Git', 10)
-
-reviewer2.rate_hw(student2, 'Python', 10)
-reviewer2.rate_hw(student2, 'Git', 9)
-
-print(student1)
-print(student2)
-print(lecturer1)
-print(lecturer2)
-print(reviewer1)
-print(reviewer2)
-print(lecturer1 < lecturer2)
+print(some_student)
+print(some_lecturer)
+print(some_reviewer)
