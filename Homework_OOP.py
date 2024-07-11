@@ -83,9 +83,33 @@ class Reviewer(Mentor):
         super().rate_hw(student, course, grade)
 
     def __str__(self):
-        return f"Имя: {self.name}\n Фамилия: {self.surname}"        
+        return f"Имя: {self.name}\n Фамилия: {self.surname}"  
 
+def average_grade_on_the_course(student_list, course_name):
+    total_grades = 0
+    count_students = 0
+    for student in student_list:
+        if course_name in student.grades:
+            total_grades += sum(student.grades[course_name]) / len(student.grades[course_name])
+            count_students += 1
+    if count_students == 0:
+        return f"Средняя оценка всех студентов по курсу {course_name}: 0.00"
+    else:
+        average_grade = total_grades / count_students
+        return f"Средняя оценка всех студентов по курсу {course_name}: {average_grade:.2f}"    
 
+def average_grade_from_students(lecturers_list, attached_course):
+    total_grades1 = 0
+    count_lecturers = 0
+    for lecturer in lecturers_list:
+        if attached_course in lecturer.courses_attached:
+            total_grades1 += sum(lecturer.grades_from_students[attached_course]) / len(lecturer.grades_from_students[attached_course])
+            count_lecturers += 1
+    if count_lecturers == 0:
+        return f"Средняя оценка всех преподавателей по курсу {attached_course}: 0.00"
+    else:
+        lecturer_grade = total_grades1 / count_lecturers
+        return f"Средняя оценка всех реподавателей по курсу {attached_course}: {lecturer_grade}"          
 
         
 student1 = Student('Dmitriy', 'Bodryakov', 'man')
@@ -127,3 +151,7 @@ print(lecturer2)
 print(reviewer1)
 print(reviewer2)
 print(lecturer1 < lecturer2)
+print(average_grade_on_the_course([student1, student2], 'Python'))
+print(average_grade_on_the_course([student1, student2], 'Git'))
+print(average_grade_from_students([lecturer1, lecturer2], 'Git'))
+print(average_grade_from_students([lecturer1, lecturer2], 'Python'))
