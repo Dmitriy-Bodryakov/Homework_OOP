@@ -21,11 +21,6 @@ self.grades.values()) / len(self.grades)
                  Курсы в процессе изучения: {', '.join(self.courses_in_progress)}\n Завершенные курсы: {', '.join(self.finished_courses)}"
         
         
-    
-             
- 
-
-
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
